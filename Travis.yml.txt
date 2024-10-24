@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "node"
+  - '6'
+
+install:
+  - npm install
+
+deploy:
+  provider: npm
+  email: "web@davelongman.com"
+  api_key: $NPM_TOKEN
+  on:
+    tags: true
+    branch: master
