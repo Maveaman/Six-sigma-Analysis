@@ -1,0 +1,49 @@
+{
+  "name": "six-sigma-control-limits",
+  "version": "1.1.2",
+  "description": "Utility methods to calculate 6 Sigma control limits from a dataset",
+  "author": "David Longman",
+  "license": "MIT",
+  "homepage": "https://github.com/dlongman/SixSigma#readme",
+  "bugs": {
+    "url": "https://github.com/dlongman/SixSigma/issues",
+    "email": "dave@davelongman.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlongman/SixSigma.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./js/sixsigma.js",
+  "types": "./ts/typings/sixsigma.d.ts",
+  "typescript": {
+    "definitions": [
+      "./ts/typings/math.d.ts",
+      "./ts/typings/sixsigma.d.ts"
+    ]
+  },
+  "scripts": {
+    "prebuild": "if exist .\\js\\ rmdir /s /q .\\js\\",
+    "build": "tsc -p .",
+    "postbuild": "npm run test",
+    "test": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha -r ts-node/register ts/tests/**/*.spec.ts",
+    "release": "standard-version && npm run gitpush",
+    "gitpush": "git push --follow-tags origin master"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.43",
+    "chai": "^4.1.2",
+    "cross-env": "^5.0.5",
+    "mocha": "^4.0.1",
+    "standard-version": "^4.2.0",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.3"
+  },
+  "dependencies": {
+    "@types/requirejs": "^2.1.31",
+    "requirejs": "^2.3.5"
+  }
+}
